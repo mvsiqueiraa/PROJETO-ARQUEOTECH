@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="icon" type="image/png" href="../../public/assets/images/favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArqueoTech - Identificação de Artefatos</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+</head>
+<body>
+    <!-- Verificação de autenticação -->
+    <script>
+        if (!localStorage.getItem('token')) {
+            const buttons = document.querySelectorAll('.input-options button');
+            buttons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.location.href = 'login.html';
+                });
+            });
+        }
+    </script>
+    
+    <!-- Barra de Navegação -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo">ArqueoTech</div>
+            <ul class="nav-links">
+                <li><a href="#treinamento">Identificação</a></li>
+                <li><a href="#historia">História</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li id="userSection">
+                    <!-- O conteúdo será atualizado via JavaScript -->
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+
+<!-- Seção de Treinamento -->
+<section id="treinamento">
+    <div class="section-title">
+        <h2>Identificação de Vasos de Gargalo e de Cariátides</h2>
+    </div>
+    <div class="ia-container">
+        <div class="input-options">
+            <button type="button" id="toggleButton" onclick="toggleCamera()">Iniciar Câmera</button>
+            <input type="file" id="imageInput" accept="image/*" style="display: none">
+            <button type="button" onclick="document.getElementById('imageInput').click()">
+                Selecionar Imagem
+            </button>
+        </div>        
+        
+        <div class="webcam-section">
+            <div id="webcam-container"></div>
+            <div id="imagePreview"></div>
+        </div>
+        
+        <div class="results-section">
+            <h3>Resultados da Análise</h3>
+            <div id="dynamic-results"></div>
+        </div>
+    </div>
+</section>
+    
+
+    <!-- Seção de historia -->
+
+<section id="historia">
+    <div class="historia-content">
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slides">
+                    <div class="slide">
+                        <img src="..\..\public\assets\images\artefato.jpeg" alt="Cerâmica Tapajônica">
+                        <div class="slide-caption">
+                            <span class="caption-number">01</span>
+                            <p>Vaso de Cariátides</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="..\..\public\assets\images\ceramica.jpg" alt="Cerâmica Tapajônica">
+                        <div class="slide-caption">
+                            <span class="caption-number">02</span>
+                            <p>Arte Cerâmica Tapajó</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="..\..\public\assets\images\vaso.jpg" alt="Cerâmica Tapajônica">
+                        <div class="slide-caption">
+                            <span class="caption-number">03</span>
+                            <p>Vaso Ritual</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-nav">
+                    <button class="prev">←</button>
+                    <div class="slider-dots"></div>
+                    <button class="next">→</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="historia-texto">
+            <span class="section-tag">História</span>
+            <h2 class="title-large">A Arte dos<br>Tapajó</h2>
+            <div class="text-columns">
+                <p class="text-highlight">Os Tapajó desenvolveram uma das mais sofisticadas culturas cerâmicas da Amazônia pré-colonial, habitando a região entre 1000 e 1600 d.C.</p>
+                <div class="text-content">
+                    <p>Sua influência cultural se estendia por uma vasta área do baixo Amazonas paraense, alcançando regiões distantes através de complexas redes de relações sociais.</p>
+                    <p>O centro político no século XVI estava localizado onde hoje é Santarém, congregando centenas de aldeias sob sua influência. A cultura Santarém floresceu e alcançou seu momento de maior pujança no período Tapajônico.</p>
+                    <p>Sua arte cerâmica é reconhecida pela elaborada decoração e simbolismo, especialmente nos vasos de gargalo e de cariátides, que representavam sua visão cosmológica e práticas xamânicas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    
+
+    <!-- Seção de Contato -->
+    <section id="contato">
+        <div class="contato-content">
+            <div class="info-contato">
+                <h2>Entre em Contato</h2>
+                <div class="email-info">
+                    <h3>E-mails para Contato:</h3>
+                    <a href="mailto:diego@gmail.com">diego@gmail.com</a>
+                    <a href="mailto:mvsiqueria@gmail.com">mvsiqueria@gmail.com</a>
+                </div>
+            </div>
+            <div class="localizacao">
+                <h2>Nossa Localização</h2>
+                <div class="mapa">
+                    <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d991.4672701228146!2d-54.74214142419566!3d-2.4183749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9288f84ad0c97629%3A0xc4f6832c95c8cf6f!2sLaborat%C3%B3rio%20de%20Arqueologia%20Curt%20Nimuendaj%C3%BA%20II!5e0!3m2!1spt-BR!2sbr!4v1706669232479!5m2!1spt-BR!2sbr"
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Rodapé -->
+    <footer>
+        <p>Desenvolvido por mvsiqueira &copy; 2025</p>
+    </footer>
+
+    <script>
+        function updateUserSection() {
+            const userSection = document.getElementById('userSection');
+            const token = localStorage.getItem('token');
+            const username = localStorage.getItem('username');
+    
+            if (token && username) {
+                userSection.innerHTML = `
+                    <span class="username">Bem-vindo, ${username}</span>
+                    <a href="#" onclick="logout()" class="login-btn">Logout</a>
+                `;
+            } else {
+                userSection.innerHTML = `
+                    <a href="login.html" class="login-btn">Login</a>
+                `;
+            }
+        }
+    
+        document.addEventListener('DOMContentLoaded', updateUserSection);
+    </script>
+    
+    <script>
+        let lastScrollY = window.scrollY;
+        let isMouseOverNav = false;
+    
+        // Detecta movimento do mouse sobre a navegação
+        document.querySelector('nav').addEventListener('mouseover', () => {
+            isMouseOverNav = true;
+            document.querySelector('nav').classList.remove('nav-hidden');
+        });
+    
+        document.querySelector('nav').addEventListener('mouseout', () => {
+            isMouseOverNav = false;
+        });
+    
+        // Controla a visibilidade da navegação ao rolar
+        window.addEventListener('scroll', () => {
+            if (!isMouseOverNav) {
+                if (window.scrollY > lastScrollY) { // rolando para baixo
+                    document.querySelector('nav').classList.add('nav-hidden');
+                } else { // rolando para cima
+                    document.querySelector('nav').classList.remove('nav-hidden');
+                }
+            }
+            lastScrollY = window.scrollY;
+        });
+    </script>
+    <script src="../js/api.js" defer></script>
+    <script src="../js/auth.js" defer></script>
+    <script src="../js/teachable.js"></script>
+    <script src="../js/slider.js"></script>
+</body>
+</html>
