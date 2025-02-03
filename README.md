@@ -56,7 +56,7 @@ npm start
 ```
 
 3. **Acesse a aplicação**
-- Abra o navegador em `http://localhost:3000`
+- Abra o navegador em `[http://localhost:5500/frontend/src/pages/]`
 
 ## Estrutura de Arquivos
 
