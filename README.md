@@ -35,15 +35,7 @@ cd backend
 npm install
 ```
 
-3. **Configure as variáveis de ambiente**
-Crie um arquivo .env na pasta backend com:
-```
-MONGODB_URI=sua_url_do_mongodb
-JWT_SECRET=seu_secret_key
-PORT=5000
-```
-
-4. **Instale as dependências do frontend**
+3. **Instale as dependências do frontend**
 ```bash
 cd ../frontend
 npm install
