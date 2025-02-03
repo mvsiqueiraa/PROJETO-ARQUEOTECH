@@ -25,7 +25,7 @@ O ArqueoTech é uma aplicação web desenvolvida para auxiliar na identificaçã
 
 1. **Clone o repositório**
 ```bash
-git clone https://github.com/seu-usuario/arqueotech.git
+git clone https://github.com/mvsiqueiraa/ArqueoTech.git
 cd arqueotech
 ```
 
