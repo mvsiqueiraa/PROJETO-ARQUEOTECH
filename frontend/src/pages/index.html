@@ -47,9 +47,13 @@
     </div>
     <div class="ia-container">
         <div class="input-options">
-            <button type="button" id="toggleButton" onclick="toggleCamera()">Iniciar Câmera</button>
+            <button type="button" id="toggleButton" onclick="toggleCamera()" 
+    title="É necessário fazer login para usar esta função">
+                Iniciar Câmera
+            </button>
             <input type="file" id="imageInput" accept="image/*" style="display: none">
-            <button type="button" onclick="document.getElementById('imageInput').click()">
+            <button type="button" onclick="document.getElementById('imageInput').click()"
+    title="É necessário fazer login para usar esta função">
                 Selecionar Imagem
             </button>
         </div>        
