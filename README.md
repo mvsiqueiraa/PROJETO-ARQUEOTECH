@@ -1,31 +1,86 @@
-# ArqueoTech
+# ArqueoTech - Identificação de Artefatos Arqueológicos
+![Diagrama de Componentes](./doc/diagrama-componentes.png)
 
-Sistema de Identificação de Artefatos Arqueológicos usando Inteligência Artificial
+Sistema de análise arqueológica combinando visão computacional e histórico cultural para identificação de artefatos em tempo real.
 
-## Descrição do Projeto
+## Estrutura de Arquivos
 
-O ArqueoTech é uma aplicação web desenvolvida para auxiliar na identificação de artefatos arqueológicos, especificamente vasos de gargalo e cariátides, utilizando técnicas de machine learning. O sistema permite análise em tempo real através de webcam ou upload de imagens.
+```
+projeto-arqueotech/
+├── backend/
+│ ├── logs/ # Logs de operações e erros
+│ ├── middleware/ # Autenticação JWT e segurança
+│ ├── models/ # Schemas MongoDB para usuários/artefatos
+│ ├── monitoring/ # Métricas de desempenho e uso
+│ ├── routes/ # Endpoints da API REST
+│ ├── tests/ # Testes de integração e unitários
+│ ├── utils/ # Ferramentas auxiliares e logger
+│ ├── .env # Configurações de ambiente
+│ ├── package.json
+│ └── server.js
+├── frontend/
+│ ├── public/ # Assets estáticos
+│ ├── src/
+│ │ ├── css/ # Estilos com glassmorphism
+│ │ ├── js/ # Integração IA e Webcam
+│ │ └── pages/ # Interface do usuário
+│ ├── package.json
+│ └── README.md
+├── doc/ # Documentação completa
+│ ├── DVP.pdf
+│ ├── diagrama-componentes.png
+│ └── apresentacao.mp4
+└── README.md # Este arquivo
 
-## Tecnologias Utilizadas
+```
 
-### Frontend
-- HTML5, CSS3, JavaScript
-- TensorFlow.js
-- Teachable Machine
-- Google Fonts (Poppins)
+## 🚀 Funcionalidades Principais
 
-### Backend
-- Node.js
-- Express.js
-- MongoDB
-- JWT (JSON Web Token)
-- Bcrypt.js
+**🔍 Identificação de Artefatos**
+- Análise em tempo real via webcam (30fps)
+- Upload de imagens (PNG/JPG até 10MB)
+- Detecção de vasos de gargalo e cariátides
+
+**🔒 Autenticação Segura**
+- Registro com validação de e-mail
+- Login com JWT e refresh tokens
+- Níveis de acesso (usuário/admin)
+
+**📚 Base Histórica**
+- Contexto cultural dos artefatos
+- Linha do tempo histórica
+- Referências bibliográficas
+
+**📊 Monitoramento**
+- Métricas de desempenho em tempo real
+- Logs detalhados (Winston)
+- Dashboard administrativo
+
+## 💻 Tecnologias Utilizadas
+
+**Backend**
+- Node.js v18 + Express
+- MongoDB Atlas + Mongoose
+- JWT + Bcrypt para autenticação
+- Winston + Morgan para logging
+
+**Frontend**
+- TensorFlow.js para inferência IA
+- Teachable Machine (modelos pré-treinados)
+- Webcam API + MediaPipe
+- Glassmorphism UI Design
+
 
 ## Instruções de Instalação
+Pré-requisitos:
+Node.js instalado.
+MongoDB configurado.
+Clonar o repositório:
 
 1. **Clone o repositório**
 ```bash
-git clone https://github.com/mvsiqueiraa/ArqueoTech.git
+git clone https://github.com/mvsiqueiraa/PROJETO-ARQUEOTECH.git
+cd projeto-arqueotech
 cd arqueotech
 ```
 
@@ -56,31 +111,8 @@ npm start
 ```
 
 3. **Acesse a aplicação**
-- Abra o navegador em `[http://localhost:5500/frontend/src/pages/]`
+- Para o frontend, abra o arquivo index.html no navegador ou use uma extensão como Live Server.
 
-## Estrutura de Arquivos
+---
 
-```
-arqueotech/
-├── backend/
-│   ├── middleware/
-│   │   └── auth.js
-│   ├── models/
-│   │   ├── Analysis.js
-│   │   └── User.js
-│   ├── routes/
-│   │   ├── analysis.js
-│   │   └── auth.js
-│   └── server.js
-│
-├── frontend/
-│   ├── src/
-│   │   ├── css/
-│   │   ├── js/
-│   │   └── html/
-│   └── public/
-│       ├── assets/
-│       └── models/
-│
-└── README.md
-```
+**ArqueoTech** 🔍 - Conectando o passado ao futuro através da tecnologia!
