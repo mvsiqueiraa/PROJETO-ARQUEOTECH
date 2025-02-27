@@ -1,3 +1,7 @@
+// Init: 22/12/24
+// Update: 26/02/25 
+// Objective: Este modelo de usuário é utilizado para armazenar informações sobre os usuários da aplicação.
+
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({

@@ -1,32 +1,61 @@
+// Init: 22/12/24
+// Update: 26/02/25 
+// Objective: Rotas de registro e login
+
 const express = require('express');
 const router = express.Router();
-const auth = require('../middleware/auth');
-const Analysis = require('../models/Analysis');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const User = require('../models/User');
 
-// Salvar nova análise
-router.post('/', auth, async (req, res) => {
+// Rota de registro
+router.post('/register', async (req, res) => {
     try {
-        const analysis = new Analysis({
-            userId: req.userId,
-            imageUrl: req.body.imageUrl,
-            predictions: req.body.predictions
+        const { name, email, password } = req.body;
+
+        let user = await User.findOne({ email });
+        if (user) {
+            return res.status(400).json({ message: 'Usuário já existe' });
+        }
+
+        user = new User({
+            name,
+            email,
+            password: await bcrypt.hash(password, 10)
         });
 
-        await analysis.save();
-        res.status(201).json(analysis);
+        await user.save();
+        res.status(201).json({ message: 'Usuário criado com sucesso' });
     } catch (error) {
-        res.status(500).json({ message: 'Erro ao salvar análise' });
+        res.status(500).json({ message: 'Erro no servidor' });
     }
 });
 
-// Buscar análises do usuário
-router.get('/my', auth, async (req, res) => {
+// Rota de login
+router.post('/login', async (req, res) => {
     try {
-        const analyses = await Analysis.find({ userId: req.userId });
-        res.json(analyses);
+        const { email, password } = req.body;
+
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(400).json({ message: 'Credenciais inválidas' });
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(400).json({ message: 'Credenciais inválidas' });
+        }
+
+        const token = jwt.sign(
+            { userId: user._id },
+            process.env.JWT_SECRET,
+            { expiresIn: '1h' }
+        );
+
+        res.json({ token, name: user.name });
     } catch (error) {
-        res.status(500).json({ message: 'Erro ao buscar análises' });
+        res.status(500).json({ message: 'Erro no servidor' });
     }
 });
 
-module.exports = router;
+module.exports = router; // Certifique-se de exportar o router

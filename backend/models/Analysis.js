@@ -1,3 +1,8 @@
+// Init: 22/12/24
+// Update: 26/02/25 
+// Objective: Este modelo de análise é utilizado para armazenar informações sobre as análises de imagens realizadas pelos usuários da aplicação.
+
+    
 const mongoose = require('mongoose');
 
 const analysisSchema = new mongoose.Schema({

@@ -1,0 +1,1 @@
+{"level":"error","message":{"context":{"endpoint":"/api/auth/login"},"errorId":"2f2f6d08-0379-442c-9504-cf235268c399","errorMessage":"Credenciais inválidas","level":"ERROR","stack":"Error: Credenciais inválidas\n    at C:\\Users\\mvsiq\\Downloads\\projeto-arqueotech\\backend\\routes\\auth.js:19:19","timestamp":"2025-02-18T17:54:00.697Z"},"timestamp":"2025-02-18T17:54:00.697Z"}
