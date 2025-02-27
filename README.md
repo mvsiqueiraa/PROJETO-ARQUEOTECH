@@ -1,5 +1,6 @@
 # ArqueoTech - Identificação de Artefatos Arqueológicos
-![Diagrama de Componentes](./doc/diagrama-componentes.png)
+![image](https://github.com/user-attachments/assets/489dc4f5-7443-479e-a658-33b1e68caeca)
+
 
 Sistema de análise arqueológica combinando visão computacional e histórico cultural para identificação de artefatos em tempo real.
 
