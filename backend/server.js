@@ -55,3 +55,13 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 });
+
+// Adicione após as outras rotas
+const artifactRoutes = require('./routes/artifacts');
+app.use('/api/artifacts', artifactRoutes);
+
+// Criar pasta para uploads
+const fs = require('fs');
+if (!fs.existsSync('uploads/artifacts')) {
+  fs.mkdirSync('uploads/artifacts', { recursive: true });
+}
