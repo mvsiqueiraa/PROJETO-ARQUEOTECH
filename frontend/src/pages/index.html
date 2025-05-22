@@ -10,75 +10,42 @@ Objective: Create the main page of the application
     <link rel="icon" type="image/png" href="../../public/assets/images/favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ArqueoTech - Identificação de Artefatos</title>
+    <title>ArqueoTech - Uma Conexão de Saberes</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 </head>
 <body>
-    <!-- Verificação de autenticação -->
-    <script>
-        if (!localStorage.getItem('token')) {
-            const buttons = document.querySelectorAll('.input-options button');
-            buttons.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    window.location.href = 'login.html';
-                });
-            });
-        }
-    </script>
-    
-    <!-- Barra de Navegação -->
     <nav>
         <div class="nav-content">
             <div class="logo">ArqueoTech</div>
             <ul class="nav-links">
-                <li><a href="#treinamento">Identificação</a></li>
+                <li><a href="identificacao.html">Identificação</a></li>
+                <li><a href="AddArtifact.html" id="addArtifactLink"> Novo Artefato</a></li>
                 <li><a href="#historia">História</a></li>
                 <li><a href="#contato">Contato</a></li>
                 <li id="userSection">
-                    <!-- O conteúdo será atualizado via JavaScript -->
-                </li>
+                    </li>
             </ul>
         </div>
     </nav>
     
-
-<!-- Seção de Treinamento -->
-<section id="treinamento">
-    <div class="section-title">
-        <h2>Identificação de Vasos de Gargalo e de Cariátides</h2>
-    </div>
-    
-    <div class="ia-container">
-        <div class="input-options">
-            <button type="button" id="toggleButton" onclick="toggleCamera()" 
-    title="É necessário fazer login para usar esta função">
-                Iniciar Câmera
-            </button>
-            <input type="file" id="imageInput" accept="image/*" style="display: none">
-            <button type="button" onclick="document.getElementById('imageInput').click()"
-    title="É necessário fazer login para usar esta função">
-                Selecionar Imagem
-            </button>
-        </div>        
-        
-        <div class="webcam-section">
-            <div id="webcam-container"></div>
-            <div id="imagePreview"></div>
-        </div>
-        
-        <div class="results-section">
-            <h3>Resultados da Análise</h3>
-            <div id="dynamic-results"></div>
-        </div>
+<section class="about-platform">
+    <div class="about-container">
+        <h1 class="about-title">ArqueoTech: Uma Conexão de Saberes</h1>
+        <p class="about-desc">
+            O <strong>ArqueoTech</strong> é uma plataforma colaborativa que utiliza inteligência artificial para identificar vasos e demais vestígios arqueológicos a partir de registros fotográficos, além de permitir que usuários registrem esses vestígios com localização geográfica.<br><br>
+            Seja você pesquisador, estudante, museu ou membro da sociedade civil, contribua para o mapeamento do patrimônio arqueológico! Poste fotos de vestígios encontrados, compartilhe a localização e ajude a construir uma rede de conhecimento aberta e segura.<br><br>
+            <span class="about-highlight">Nossa missão é informatizar a arqueologia, conectando tecnologia, ciência e sociedade para proteger e valorizar nossa história.</span>
+        </p>
+        <ul class="about-features">
+            <li>🔎 Identificação automática de cerâmicas e fragmentos via IA</li>
+            <li>📸 Upload de fotos com geolocalização dos achados</li>
+            <li>👤 Perfis para público geral, pesquisadores e museus</li>
+            <li>🗺️ Visualização de achados em mapa interativo</li>
+            <li>🔒 Compartilhamento público ou privado conforme o perfil</li>
+        </ul>
     </div>
 </section>
-    
-
-    <!-- Seção de historia -->
 
 <section id="historia">
     <div class="historia-content">
@@ -86,21 +53,21 @@ Objective: Create the main page of the application
             <div class="slider">
                 <div class="slides">
                     <div class="slide">
-                        <img src="..\..\public\assets\images\artefato.jpeg" alt="Cerâmica Tapajônica">
+                        <img src="../../public/assets/images/artefato.jpeg" alt="Cerâmica Tapajônica - Vaso de Cariátides">
                         <div class="slide-caption">
                             <span class="caption-number">01</span>
                             <p>Vaso de Cariátides</p>
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="..\..\public\assets\images\ceramica.jpg" alt="Cerâmica Tapajônica">
+                        <img src="../../public/assets/images/ceramica.jpg" alt="Cerâmica Tapajônica - Arte Cerâmica Tapajó">
                         <div class="slide-caption">
                             <span class="caption-number">02</span>
                             <p>Arte Cerâmica Tapajó</p>
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="..\..\public\assets\images\vaso.jpg" alt="Cerâmica Tapajônica">
+                        <img src="../../public/assets/images/vaso.jpg" alt="Cerâmica Tapajônica - Vaso Ritual">
                         <div class="slide-caption">
                             <span class="caption-number">03</span>
                             <p>Vaso Ritual</p>
@@ -108,9 +75,10 @@ Objective: Create the main page of the application
                     </div>
                 </div>
                 <div class="slider-nav">
-                    <button class="prev">←</button>
-                    <div class="slider-dots"></div>
-                    <button class="next">→</button>
+                    <button class="prev" aria-label="Slide anterior">←</button>
+                    <div class="slider-dots">
+                        </div>
+                    <button class="next" aria-label="Próximo slide">→</button>
                 </div>
             </div>
         </div>
@@ -119,27 +87,24 @@ Objective: Create the main page of the application
             <span class="section-tag">História</span>
             <h2 class="title-large">A Arte dos<br>Tapajó</h2>
             <div class="text-columns">
-                <p class="text-highlight">Os Tapajó desenvolveram uma das mais sofisticadas culturas cerâmicas da Amazônia pré-colonial, habitando a região entre 1000 e 1600 d.C.</p>
+                <p class="text-highlight">A cultura Tapajó, florescendo entre 1000 e 1600 d.C. na Amazônia, é notável por sua sofisticada cerâmica e vasta influência cultural. O epicentro de sua civilização estava em Santarém-PA, onde a arte cerâmica, especialmente vasos de gargalo e cariátides, se destacava por sua elaboração, simbolismo e complexidade.</p>
                 <div class="text-content">
-                    <p>Sua influência cultural se estendia por uma vasta área do baixo Amazonas paraense, alcançando regiões distantes através de complexas redes de relações sociais.</p>
-                    <p>O centro político no século XVI estava localizado onde hoje é Santarém, congregando centenas de aldeias sob sua influência. A cultura Santarém floresceu e alcançou seu momento de maior pujança no período Tapajônico.</p>
-                    <p>Sua arte cerâmica é reconhecida pela elaborada decoração e simbolismo, especialmente nos vasos de gargalo e de cariátides, que representavam sua visão cosmológica e práticas xamânicas.</p>
+                    <p>Sua influência cultural se estendia por uma vasta área da região baixo Amazonas, alcançando regiões distantes através de complexas redes de relações sociais.</p>
+                    <p>O epicentro dessas ocupações no século XVI estava localizado na região onde hoje está localizada a cidade de Santarém-PA, congregando inúmeras aldeias sob sua influência. A cultura Santarém aflorou e alcançou seu momento de maior força no período Tapajônico, sendo responsáveis por deixarem grandes contribuições para a arqueologia amazônica.</p>
+                    <p>Sua arte cerâmica é reconhecida por suas peças muito bem elaboradas, com presença de decorações com muito detalhes e simbolismo, especialmente nos vasos de gargalo e de cariátides que foram peças que obtiveram um maior destaque na história local, presentes até hoje em espaços públicos pela cidade de Santarém, estes vasos apresentam formas de fazer cerâmicos muito complexos, apresentam também uma ligação cultural muito forte com a região. Seus vestígios (materiais e imateriais) são importantes, pois nos mostram a resistência cultural e também a transmissão de saberes que ocorre e resiste durante um longo período de tempo, fazendo uma ligação importantíssima do passado com o presente.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-    
-
-    <!-- Seção de Contato -->
     <section id="contato">
         <div class="contato-content">
             <div class="info-contato">
                 <h2>Entre em Contato</h2>
                 <div class="email-info">
                     <h3>E-mails para Contato:</h3>
-                    <a href="mailto:diego@gmail.com">diego@gmail.com</a>
+                    <a href="mailto:diego0908.ds@gmail.com">diego0908.ds@gmail.com</a>
                     <a href="mailto:mvsiqueria@gmail.com">mvsiqueria@gmail.com</a>
                 </div>
             </div>
@@ -161,37 +126,25 @@ Objective: Create the main page of the application
     </section>
     
 
-    <!-- Rodapé -->
     <footer>
-        <p>Desenvolvido por mvsiqueira &copy; 2025</p>
+        <p>Desenvolvido por mvsiqueira © 2025</p>
     </footer>
 
+    <script src="../js/api.js" defer></script>
+    <script src="../js/auth.js" defer></script>
+    <script src="../js/slider.js"></script>
     <script>
-        function updateUserSection() {
-            const userSection = document.getElementById('userSection');
-            const token = localStorage.getItem('token');
-            const username = localStorage.getItem('username');
-    
-            if (token && username) {
-                userSection.innerHTML = `
-                    <span class="username">Bem-vindo, ${username}</span>
-                    <a href="#" onclick="logout()" class="login-btn">Logout</a>
-                `;
-            } else {
-                userSection.innerHTML = `
-                    <a href="login.html" class="login-btn">Login</a>
-                `;
-            }
-        }
-    
-        document.addEventListener('DOMContentLoaded', updateUserSection);
-    </script>
-    
-    <script>
+        // Script de autenticação para os botões da IA nesta página
+        document.addEventListener('DOMContentLoaded', () => {
+            // A lógica de exibição/ocultação do link "Novo Artefato" foi movida para auth.js
+            // A lógica de redirecionamento para botões de IA não existe mais nesta página
+            // pois a seção de treinamento foi movida para identificacao.html
+        });
+
+        // Script para esconder/mostrar navbar ao rolar
         let lastScrollY = window.scrollY;
         let isMouseOverNav = false;
     
-        // Detecta movimento do mouse sobre a navegação
         document.querySelector('nav').addEventListener('mouseover', () => {
             isMouseOverNav = true;
             document.querySelector('nav').classList.remove('nav-hidden');
@@ -201,21 +154,16 @@ Objective: Create the main page of the application
             isMouseOverNav = false;
         });
     
-        // Controla a visibilidade da navegação ao rolar
         window.addEventListener('scroll', () => {
             if (!isMouseOverNav) {
-                if (window.scrollY > lastScrollY) { // rolando para baixo
+                if (window.scrollY > lastScrollY) { 
                     document.querySelector('nav').classList.add('nav-hidden');
-                } else { // rolando para cima
+                } else { 
                     document.querySelector('nav').classList.remove('nav-hidden');
                 }
             }
             lastScrollY = window.scrollY;
         });
     </script>
-    <script src="../js/api.js" defer></script>
-    <script src="../js/auth.js" defer></script>
-    <script src="../js/teachable.js"></script>
-    <script src="../js/slider.js"></script>
 </body>
 </html>
