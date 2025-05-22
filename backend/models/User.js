@@ -18,10 +18,21 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    institution: { // novo campo
+        type: String,
+        required: true // deixe obrigatório se quiser
+    },
     createdAt: {
         type: Date,
         default: Date.now
     }
 });
+
+// Adicionar seleção explícita de campos
+userSchema.methods.toJSON = function() {
+    const obj = this.toObject();
+    delete obj.password;
+    return obj;
+};
 
 module.exports = mongoose.model('User', userSchema);

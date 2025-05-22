@@ -11,7 +11,11 @@ const User = require('../models/User');
 // Rota de registro
 router.post('/register', async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { name, email, password, institution } = req.body;
+
+        if (!institution) {
+            return res.status(400).json({ message: 'Instituição é obrigatória' });
+        }
 
         let user = await User.findOne({ email });
         if (user) {
@@ -21,7 +25,8 @@ router.post('/register', async (req, res) => {
         user = new User({
             name,
             email,
-            password: await bcrypt.hash(password, 10)
+            password: await bcrypt.hash(password, 10),
+            institution // novo campo
         });
 
         await user.save();
